@@ -8,4 +8,3 @@
 - https://bookdown.org/yihui/rmarkdown/  
 - https://zsmith27.github.io/rmarkdown_crash-course/  
 - https://www.markdownguide.org/basic-syntax
-
