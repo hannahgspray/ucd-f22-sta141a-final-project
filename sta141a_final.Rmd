@@ -10,12 +10,17 @@ fontsize: 10pt
 ---
 
 ## Project Overview  
-This project aims to investigate possible risk factors for death due to heart failure. 
+This project aims to investigate possible risk factors for death due to heart failure.  
+
+### Group members:  
+- Alvin Akpokli (akakpokli@ucdavis.edu)
+- Sarvesh Krishan (skrishan@ucdavis.edu)
+- Ngai Pan Ng (npng@ucdavis.edu)
+- Hannah Spray (hgspray@ucdavis.edu)
 
 ### Research questions of interest:  
-1.  
-2.  
-3.  
+1. Is death from heart failure significantly more prevalent in those with high blood pressure (i.e. hypertension)?
+2.  Is death from heart failure significantly more prevalent in men or women that smoke versus those who do not?
 
 ### Dataset:  
 Our dataset is called "Heart failure clinical records dataset". This dataset was obtained from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Heart+failure+clinical+records).
@@ -27,6 +32,11 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r loadData, echo = FALSE}
 # make sure csv file is in working directory
 data = read.csv("heart_failure_clinical_records_dataset.csv")
+head(data)
+length(data$DEATH_EVENT)
+names(data)
+
+y = data$DEATH_EVENT
 
 ```
 
