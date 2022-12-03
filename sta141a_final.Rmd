@@ -58,7 +58,7 @@ We plan to conduct our analyses as a classification problem, using a logistic re
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-packages = c("knitr", "ggplot2", "kableExtra", "dplyr", "corrplot", "car", "ISLR")
+packages = c("knitr", "ggplot2", "kableExtra", "dplyr", "corrplot", "car", "pls")
 lapply(packages, library, character.only = TRUE)
 ```
 
@@ -130,11 +130,51 @@ ggplot(data = data,
   scale_fill_discrete(name = "high blood pressure",
                       labels = c("no", "yes"))
   
-
+# diagnostic plots for full model
+par(mfrow = c(2,2))
+plot(full_model)
 
 ```
 
 # Model Fitting  
+## Principle Component Analysis
+```{r pcr, echo = FALSE, fig.align = 'center'}
+# using https://www.statology.org/principal-components-regression-in-r/ as a reference
+
+# define training / testing data sets
+# (arbitrarily) designating 1st half of obs. as training set, 2nd half as test set
+train = data[1:nrow(data)/2, ] #1st half of observations
+test = data[nrow(data)/2:nrow(data), ] #2nd half of observations
+y_test = data[nrow(data)/2:nrow(data), c("DEATH_EVENT")] 
+
+# create pcr model object
+pcr_model = pcr(DEATH_EVENT ~ ., data = train, scale = TRUE)
+
+# e.g.:
+# using pcr model to make predictions on a test set
+pcr_pred1 = predict(pcr_model, test, ncomp = 1) #1 principle component
+
+# calculating mean squared prediction error based on number of principle components
+get_rmse = function(num_principle_components) {
+  rmse = sqrt(mean((predict(pcr_model, test, ncomp = num_principle_components) - y_test)^2))
+  return(rmse)
+}
+
+# vector for number of principle components
+count = seq(from = 1, to = 10, by = 1)
+
+# table: # of principle components vs. mean squared pred. error
+kable(data.frame(count, sapply(count, get_rmse)),
+      digits = 5,
+      col.names = c('number of principle components', 'mean squared prediction error'),
+      caption = "mean squared prediction error for 10 different pcr models") %>%
+  kable_styling(latex_options = "hold_position")
+```
+hannah note to self:  
+- how to interpret mean squared prediction error?  
+- how to know how many pcr models to test? like for the example above i computed 10 different RMSE's but how do we decide how many RMSEs we want to compare?  
+- is comparing RMSEs the right way to go about this? im copying hw6 not sure what to do see hw6
+
 ## Hypothesis Testing
 
 

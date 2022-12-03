@@ -121,7 +121,47 @@ some plots:
 
 \begin{center}\includegraphics{sta141a_final_files/figure-latex/unnamed-chunk-1-1} \end{center}
 
+
+
+\begin{center}\includegraphics{sta141a_final_files/figure-latex/unnamed-chunk-1-2} \end{center}
+
 # Model Fitting  
+## Principle Component Analysis
+\begin{table}[!h]
+
+\caption{\label{tab:pcr}mean squared prediction error for 10 different pcr models}
+\centering
+\begin{tabular}[t]{r|r}
+\hline
+number of principle components & mean squared prediction error\\
+\hline
+1 & 0.38474\\
+\hline
+2 & 0.29188\\
+\hline
+3 & 0.25216\\
+\hline
+4 & 0.27941\\
+\hline
+5 & 0.28317\\
+\hline
+6 & 0.26459\\
+\hline
+7 & 0.22429\\
+\hline
+8 & 0.18658\\
+\hline
+9 & 0.23487\\
+\hline
+10 & 0.25861\\
+\hline
+\end{tabular}
+\end{table}
+hannah note to self:  
+- how to interpret mean squared prediction error?  
+- how to know how many pcr models to test? like for the example above i computed 10 different RMSE's but how do we decide how many RMSEs we want to compare?  
+- is comparing RMSEs the right way to go about this? im copying hw6 not sure what to do see hw6
+
 ## Hypothesis Testing
 
 
