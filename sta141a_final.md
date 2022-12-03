@@ -6,6 +6,7 @@ date: "7 December 2022"
 output: 
   pdf_document:
     keep_md: true
+    extra_dependencies: ["amsmath"]
 fontsize: 10pt
 ---
 
@@ -25,24 +26,33 @@ This project aims to investigate possible risk factors for death due to heart fa
 ## Dataset:  
 Our dataset is called "Heart failure clinical records dataset". This dataset was obtained from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Heart+failure+clinical+records). This dataset contains both boolean and numerical variables:  
   
-- age: age of the patient (years)  
-- anaemia: decrease of red blood cells or hemoglobin (boolean)  
-- high blood pressure: if the patient has hypertension (boolean)  
-- creatinine phosphokinase (CPK): level of the CPK enzyme in the blood (mcg/L)  
-- diabetes: if the patient has diabetes (boolean)  
-- ejection fraction: percentage of blood leaving the heart at each contraction (percentage)  
-- platelets: platelets in the blood (kiloplatelets/mL)  
-- sex: woman or man (binary)  
-- serum creatinine: level of serum creatinine in the blood (mg/dL)  
-- serum sodium: level of serum sodium in the blood (mEq/L)  
-- smoking: if the patient smokes or not (boolean)  
-- time: follow-up period (days)  
+- age: age of the patient (years) 
+- anaemia: decrease of red blood cells or hemoglobin (boolean)
+- high blood pressure: if the patient has hypertension (boolean)
+- creatinine phosphokinase (CPK): level of the CPK enzyme in the blood (mcg/L)
+- diabetes: if the patient has diabetes (boolean)
+- ejection fraction: percentage of blood leaving the heart at each contraction (percentage)
+- platelets: platelets in the blood (kiloplatelets/mL)
+- sex: woman or man (binary)
+- serum creatinine: level of serum creatinine in the blood (mg/dL)
+- serum sodium: level of serum sodium in the blood (mEq/L)
+- smoking: if the patient smokes or not (boolean)
+- time: follow-up period (days)
 - [target] death event: if the patient deceased during the follow-up period (boolean)  
   
-We will treat "death event" as our binary response variable.
+We will treat "death event" as our binary response variable $Y$, where  
+\[
+Y = \begin{cases}
+1 & \text{if patient } i \text{ deceased during the follow-up period} \\
+0 & \text{otherwise}
+\end{cases}
+\]
 
 ## Method:  
-We plan to conduct our analyses as a classification problem, using a logistic regression model. 
+We plan to conduct our analyses as a classification problem, using a logistic regression model. We will create a model that expresses the log-odds of a patient being deceased during the follow-up period as a function of our predictor variables. Our goals for these fitted models are:  
+1. To determine whether or not high blood pressure (hypertension) increases the probability of a patient being deceased during the follow-up period  
+2. To determine whether or not _____ blaha lhah?
+
 
 # Diagnostics
 
@@ -103,8 +113,18 @@ time & 1.1518\\
 \hline
 \end{tabular}
 \end{table}
+For the purposes of this analysis, we can use the general rule of thumb which states that predictor variables with VIF values greater than 5 should be treated as problematic. We can see by looking at the table above that none of the predictor variables in the fitted model have VIF values greater than 5; in fact, all of the values are between 1 and 2. Hence, we can proceed without having to remedy multicollinearity. 
+
   
+  
+some plots:
+
+\begin{center}\includegraphics{sta141a_final_files/figure-latex/unnamed-chunk-1-1} \end{center}
+
 # Model Fitting  
+## Hypothesis Testing
+
+
 
 # Discussion  
 
