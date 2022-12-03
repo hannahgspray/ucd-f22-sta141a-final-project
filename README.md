@@ -1,4 +1,5 @@
 ## ucd-f22-sta141a-final-project
+- main Rmd file (intended to be knit to pdf): 'sta141a_final.Rmd'
 
 ### resources: 
 ##### github + rstudio setup:  
